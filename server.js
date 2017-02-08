@@ -16,6 +16,7 @@ var user = require('./models/user.js');
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://' + config.db.host + '/' + config.db.name);
 var Schema = mongoose.Schema;
 mongoose.Promise = global.Promise;
+
 //CONNECT FLASH
 var flash = require('connect-flash');
 
@@ -87,7 +88,7 @@ app.use('/auth', authRouter);
 
 var appRouter = require("./app");
 app.use('/app', appRouter);
-
-app.listen(7900, function() {
-    console.log("Program Running On 7900")
+app.set('port', (process.env.PORT || 7900))
+app.listen(app.get('port'), function() {
+    console.log("Program Running On port ", app.get('port'))
 });
