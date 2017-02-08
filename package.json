@@ -9,7 +9,7 @@
     },
     "author": "keith moore",
     "license": "ISC",
-    "github": "",
+    "github": "https://github.com/Mookh01/nightlife_coordination.git",
     "dependencies": {
         "bcrypt-nodejs": "0.0.3",
         "bcryptjs": "^2.3.0",
