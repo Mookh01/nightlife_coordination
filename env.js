@@ -2,5 +2,3 @@
     process.env['CONSUMER_SECRET'] = "ApZGcNohWDBaU1nYTYj-9KMd3mo"
     process.env['ACCESS_TOKEN_KEY'] = "VyhRLBUiXga_9pCOXZPmUV16FZXrGlJ5"
     process.env['ACCESS_TOKEN_SECRET'] = "bz4Ydhx4VHZVTiUxQzaHKtXW6HY"
-    PORT = "https://protected-hollows-30377.herokuapp.com/"
-    MONGODB_URI = "mongodb://admin:admin@ds127878.mlab.com:27878/heroku_5f5j0580"

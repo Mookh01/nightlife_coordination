@@ -1,36 +1,36 @@
 {
-    "name": "nightlife_fcc",
-    "version": "1.0.0",
-    "description": "fcc fullstack app",
-
-    "main": "server.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "author": "keith moore",
-    "license": "ISC",
-    "github": "https://github.com/Mookh01/nightlife_coordination.git",
-    "dependencies": {
-        "bcrypt-nodejs": "0.0.3",
-        "bcryptjs": "^2.3.0",
-        "body-parser": "^1.15.2",
-        "bootstrap": "^3.3.7",
-        "connect-flash": "^0.1.1",
-        "cookie-parser": "^1.4.3",
-        "dotenv": "^4.0.0",
-        "express": "^4.14.0",
-        "express-redirect": "^1.2.2",
-        "express-session": "^1.14.2",
-        "express-validator": "^2.21.0",
-        "jade": "^1.11.0",
-        "jade-bootstrap": "^1.0.9",
-        "jquery": "^3.1.1",
-        "lodash": "^4.17.1",
-        "mongoose": "^4.6.8",
-        "node-uuid": "^1.4.7",
-        "passport": "^0.3.2",
-        "passport-local": "^1.0.0",
-        "request": "^2.79.0",
-        "yelp": "^1.0.2"
-    }
+  "name": "nightlife_fcc",
+  "version": "1.0.0",
+  "description": "fcc fullstack app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "keith moore",
+  "license": "ISC",
+  "github": "https://github.com/Mookh01/nightlife_coordination.git",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "bcryptjs": "^2.3.0",
+    "body-parser": "^1.15.2",
+    "bootstrap": "^3.3.7",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
+    "dotenv": "^4.0.0",
+    "express": "^4.14.0",
+    "express-redirect": "^1.2.2",
+    "express-session": "^1.14.2",
+    "express-validator": "^2.21.0",
+    "jade": "^1.11.0",
+    "jade-bootstrap": "^1.0.9",
+    "jquery": "^3.1.1",
+    "lodash": "^4.17.1",
+    "mongoose": "^4.6.8",
+    "node-env-file": "^0.1.8",
+    "node-uuid": "^1.4.7",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "request": "^2.79.0",
+    "yelp": "^1.0.2"
+  }
 }
