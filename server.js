@@ -88,7 +88,6 @@ app.use('/auth', authRouter);
 
 var appRouter = require("./app");
 app.use('/app', appRouter);
-var server = require('http').createServer();
 
 
 app.listen(process.env.PORT || 7900, function() {
