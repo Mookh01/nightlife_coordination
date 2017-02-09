@@ -88,7 +88,7 @@ app.use('/auth', authRouter);
 
 var appRouter = require("./app");
 app.use('/app', appRouter);
-app.set('port', (process.env.PORT || 7900))
-app.listen(app.get('port'), function() {
-    console.log("Program Running On port ", app.get('port'))
+var port = process.env.PORT || 7900;
+app.listen(port, function() {
+    console.log("Program Running On port: ", port)
 });
