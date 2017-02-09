@@ -88,7 +88,12 @@ app.use('/auth', authRouter);
 
 var appRouter = require("./app");
 app.use('/app', appRouter);
-var port = process.env.PORT || 7900;
-app.listen(port, function() {
-    console.log("Program Running On port: ", port)
+var server = require('http').createServer();
+// var port = process.env.PORT || 7900;
+// app.listen(port, function() {
+//     console.log("Program Running On port: ", port)
+// });
+
+app.listen(process.env.PORT || 7900, function() {
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
