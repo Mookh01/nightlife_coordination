@@ -8,7 +8,7 @@ var bodyParser = require("body-parser");
 var Localstrategy = require('passport-local').Strategy;
 var passport = require("passport");
 var mongoose = require('mongoose');
-var config = require('./config');
+var config = require('./config.js');
 var bar = require('./models/bar.js');
 var Yelp = require('yelp');
 var business = require('./models/business.js');
@@ -89,6 +89,7 @@ app.use('/auth', authRouter);
 var appRouter = require("./app");
 app.use('/app', appRouter);
 
+var server = require('http').createServer();
 
 app.listen(process.env.PORT || 7900, function() {
     console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
