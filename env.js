@@ -3,4 +3,4 @@
     process.env['ACCESS_TOKEN_KEY'] = "VyhRLBUiXga_9pCOXZPmUV16FZXrGlJ5"
     process.env['ACCESS_TOKEN_SECRET'] = "bz4Ydhx4VHZVTiUxQzaHKtXW6HY"
     process.env['PORT'] = "https://protected-hollows-30377.herokuapp.com/"
-    process.env['MONGODB_URI'] = "mongodb://heroku_5f5j0580:4mnu3i05p3abugrsb6fkpo1lcr@ds127878.mlab.com:27878/heroku_5f5j0580"
+    process.env['MONGODB_URI'] = "mongodb://admin:admin@ds127878.mlab.com:27878/heroku_5f5j0580"
