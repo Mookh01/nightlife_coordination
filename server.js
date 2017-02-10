@@ -14,7 +14,7 @@ var Yelp = require('yelp');
 var business = require('./models/business.js');
 var user = require('./models/user.js');
 // mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/nightlifefcc');
-mongoose.connect(process.env.MONGODB_URI);
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/nightlifefcc');
 var Schema = mongoose.Schema;
 mongoose.Promise = global.Promise;
 
@@ -92,11 +92,11 @@ app.use('/app', appRouter);
 
 var server = require('http').createServer();
 
-// app.listen(process.env.PORT || 7900, function() {
-//     console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
-// });
-var port = process.env.PORT || 7900
-
-server.listen(port, function() {
-    console.log("App is running on port " + port);
+app.listen(process.env.PORT || 7900, function() {
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
+// var port = process.env.PORT || 7900
+
+// server.listen(port, function() {
+//     console.log("App is running on port " + port);
+// });
