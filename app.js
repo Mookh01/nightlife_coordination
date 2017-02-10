@@ -4,7 +4,6 @@ var business = require('./models/business.js');
 var search = require('./models/search.js')
 var user = require('./models/user.js')
 var bodyParser = require("body-parser");
-// var config = require('./config.js');
 var mongoose = require('mongoose');
 var bar = require('./models/bar.js');
 var request = require('request');
@@ -12,7 +11,6 @@ var fs = require("fs");
 var http = require("http");
 var router = express.Router();
 module.exports = router;
-
 
 // if (!process.env.CONSUMER_KEY) {
 //     var env = require('./env.js')
@@ -112,7 +110,7 @@ router.route('/')
         yelp.search({ term: 'bar', location: city })
             .then(function(data) {
                 var results = [];
-                for (i = 0; i < 5; i++) {
+                for (i = 0; i < 10; i++) {
                     var name = data.businesses[i].name;
                     var snippet = data.businesses[i].snippet_text;
                     var image = data.businesses[i].image_url;
