@@ -22,6 +22,7 @@ User Story: As an unauthenticated user, when I login I should not have to search
 
 #Challenges:
 The biggest obstacles to overcome were; routing(redirects), async behavior, mongodb updating behavior, buttons and configuration to Heroku. 
+
 This was the first time utilizing a button click as a conditional; meaning, if you were a signed-in user you could click the button to attend otherwise you were redirected to log-in.  
 I discovered I couldn't redirect when I seperated out a button click as a route and use JQuery AJAX. AJAX does not allow you to redirect once you've passed information to the url route used in the ajax call. 
 My solution was to not use JQuery for this purpose. Instead I used Express.js functionality and kept the routes within the same file to make passing the data easier. I also wanted to use fewer files. Further reading is needed to find a cleaner and less cluttered solution. 
@@ -35,4 +36,7 @@ I believe a solution is in the mongodb documentation, although I've not come acr
 The button changes so that the user will see they have attended but the "totals" don't add up immediately.After reloading the page you see the update. I want to fix this, however the app currently meets the standards of the challange. 
 
 I continue to have issues with getting my application to work on Heroku. I've come across conflicting information when it comes to config.js, .env and env.js files. 
-Although I have loaded several working project already, each new project presents new differences. Such as this project using the Yelp API.  
+Although I have loaded several working project already, each new project presents new differences. Such as this project using the Yelp API.  The solution was using an .env file. within that file is my Yelp API keys, the heroku port information and the mLab mongodb url.   I also manually put in these configurations with the Heroku Command Line tools. 
+
+The Biggest Lesson I Continue to Learn is Detail. After removing the config.js file I had forgotten to remove the module from server.js. Also, I need to utilize the `$ heroku log` when I am searching for Errors with Heroku. The website log does not provide sufficient information. 
+
