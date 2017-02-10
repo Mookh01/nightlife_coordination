@@ -92,6 +92,11 @@ app.use('/app', appRouter);
 
 var server = require('http').createServer();
 
-app.listen(process.env.PORT || 7900, function() {
-    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+// app.listen(process.env.PORT || 7900, function() {
+//     console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+// });
+var port = process.env.PORT || 7900
+
+server.listen(port, function() {
+    console.log("App is running on port " + port);
 });
