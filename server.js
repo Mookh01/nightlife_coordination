@@ -13,7 +13,8 @@ var bar = require('./models/bar.js');
 var Yelp = require('yelp');
 var business = require('./models/business.js');
 var user = require('./models/user.js');
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/nightlifefcc');
+// mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/nightlifefcc');
+mongoose.connect(process.env.MONGODB_URI);
 var Schema = mongoose.Schema;
 mongoose.Promise = global.Promise;
 
