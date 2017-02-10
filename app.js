@@ -14,9 +14,9 @@ var router = express.Router();
 module.exports = router;
 
 
-if (!process.env.CONSUMER_KEY) {
-    var env = require('./env.js')
-}
+// if (!process.env.CONSUMER_KEY) {
+//     var env = require('./env.js')
+// }
 
 var yelp = new Yelp({
         consumer_key: process.env.CONSUMER_KEY,
