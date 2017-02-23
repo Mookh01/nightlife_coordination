@@ -20,7 +20,7 @@ User Story: As an authenticated user, I can remove myself from a bar if I no lon
 User Story: As an unauthenticated user, when I login I should not have to search again.
 
 
-#Challenges:
+# Challenges:
 The biggest obstacles to overcome were; routing(redirects), async behavior, mongodb updating behavior, buttons and configuration to Heroku. 
 
 This was the first time utilizing a button click as a conditional; meaning, if you were a signed-in user you could click the button to attend otherwise you were redirected to log-in.  
