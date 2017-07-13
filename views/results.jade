@@ -1,0 +1,49 @@
+extends layout
+
+block content
+
+    h1 Plans tonight?
+    i.fa.fa-glass
+    
+    form(method="post")
+        fieldset.form-group
+            label( for="")  Enter Location: 
+            input.form-control(name="city", type="text", placeholder="city name", value="")
+        button.btn.btn-primary#city(type="submit", value="Submit") Search
+        a.btn.btn-default(href="/") Cancel
+    
+
+    //- h1 The Bars of #{searches[0].city} 
+
+    table.table.table-hover
+        thead 
+            tr
+                td
+                
+        tbody
+        
+        each search in searches
+            tr
+                td
+                    img(src=search.image)
+                td= search.name
+                    p=search.snippet
+                td
+                    a.btn.btn-danger.btn-lg(type='submit', id='#{search.name}', class='#{search.attending}',href="/app/attend/#{search.name}", name='#{search.city}') NOT Going
+                    p Total Attending #{search.total}
+
+
+                    
+
+
+                         
+
+
+  
+                    
+                        
+                       
+
+    script(src="/jquery.min.js", type="text/javascript")
+    script ( href = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css", rel = "stylesheet", integrity = "sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7", crossorigin = "anonymous")
+    script(src='/input.js',type="text/javascript")

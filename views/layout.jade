@@ -1,0 +1,43 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='UTF-8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge')
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        title= title
+
+        link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
+        script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+        link(rel='stylesheet', href='/css/bootstrap.min.css')
+        link(rel='stylesheet', href='/style.css')
+    body
+        nav.navbar.navbar-inverse.navbar-fixed-top
+            .container-fluid
+                .navbar-header
+                    button.navbar-toggle(type='button', data-toggle='collapse', data-target='#myNavbar')
+                        span.icon-bar
+                        span.icon-bar
+                        span.icon-bar
+                    a.navbar-brand(href='#') 
+                #myNavbar.collapse.navbar-collapse
+                    ul.nav.navbar-nav
+                        li.dropdown
+
+                    ul.nav.navbar-right
+                        li
+                            a(href='/auth/logout') LOGOUT
+        .container
+            .main-content
+            if success_msg && success_msg.length
+                .alert.alert-success
+                    strong #{success_msg}
+            if error_msg && error_msg.length
+                .alert.alert-danger
+                    strong #{error_msg}
+            if error && error.length
+                .alert.alert-danger
+                    strong #{error}
+block content
+    script(src="/jquery.min.js", type="text/javascript")
+    script(src='/input.js',type="text/javascript")
