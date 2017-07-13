@@ -8,13 +8,16 @@ var bodyParser = require("body-parser");
 var Localstrategy = require('passport-local').Strategy;
 var passport = require("passport");
 var mongoose = require('mongoose');
-var config = require('./config');
 var bar = require('./models/bar.js');
 var Yelp = require('yelp');
 var business = require('./models/business.js');
 var user = require('./models/user.js');
-mongoose.connect('mongodb://' + config.db.host + '/' + config.db.name);
+
+// mongoose.connect('mongodb://' + config.db.host + '/' + config.db.name);
+// var Schema = mongoose.Schema;
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/nightlifefcc');
 var Schema = mongoose.Schema;
+mongoose.Promise = global.Promise;
 
 //CONNECT FLASH
 var flash = require('connect-flash');
@@ -88,6 +91,11 @@ app.use('/auth', authRouter);
 var appRouter = require("./app");
 app.use('/app', appRouter);
 
-app.listen(7900, function() {
-    console.log("Program Running On 7900")
+// app.listen(7900, function() {
+//     console.log("Program Running On 7900")
+
+var server = require('http').createServer();
+
+app.listen(process.env.PORT || 7900, function() {
+    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });

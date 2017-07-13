@@ -9,27 +9,42 @@ block content
             p.lead See Whats Going On
             div
               a.btn.btn-primary.btn-lg(href='/auth/login') Sign In
-              |   or  
+              |   or
               a.btn.btn-warning.btn-lg(href='/app') See Whats Happening
         .row
           .col-sm-4
             .panel.panel-default
               .panel-body
-                h3 Reset Password 
+                h3 Reset Password
                 p
                 a.btn.btn-default.btn-block(href='/login/forgot') Click to Reset
           .col-sm-offset-4.col-sm-4
             .panel.panel-default
               .panel-body.sinter
                 h3   Sign Up
+
+        .jumbotron(style="text-align:center;")
+          h1 Night-Life Coordinator
+          div
+            p.lead Coordinate With Friends
+            div
+              a.btn.btn-primary.btn-lg(href='/auth/login') Sign In
+              |   or
+              a.btn.btn-warning.btn-lg(href='/app') Search A City
+
+        .col-sm-offset-4.col-sm-4
+            .panel.panel-default
+              .panel-body.sinter
+                h3(style="text-align:center;")   Sign Up
                 p
                 a.btn.btn-default.btn-block(href='/auth/signup') Click to Register
     .footer
       .container
-        
+
         ul.links
           li
             a(href='/yelp') Home
           li
             a(href='/contact') Contact
         .clearfix
+        

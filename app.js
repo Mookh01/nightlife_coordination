@@ -17,6 +17,9 @@ module.exports = router;
 if (!process.env.CONSUMER_KEY) {
     var env = require('./env.js')
 }
+// if (!process.env.CONSUMER_KEY) {
+//     var env = require('./env.js')
+// }
 
 var yelp = new Yelp({
         consumer_key: process.env.CONSUMER_KEY,
@@ -35,7 +38,7 @@ router.route('/')
                     if (c.lastsearch.length > 0) {
                         var current = c.lastsearch;
                         var userCity = current[0].city;
-                        //see if there's an existing city with bar names:We're updating the total attending. 
+                        //see if there's an existing city with bar names:We're updating the total attending.
                         bar.findOne({ city: userCity },
                             function(err, b) {
                                 //if the city does exist...
@@ -44,7 +47,7 @@ router.route('/')
                                     for (i = 0; i < current.length; i++) { //This loop uses our latest search
                                         var searchbarname = current[i].name;
                                         var barMatch = b.location;
-                                        for (j = 0; j < barMatch.length; j++) { //This loop goes through our bar model db, searching for bar name matches. 
+                                        for (j = 0; j < barMatch.length; j++) { //This loop goes through our bar model db, searching for bar name matches.
                                             var locabar = barMatch[j].bar;
                                             var locatotal = barMatch[j].total;
                                             //Match the bar names from our bar model to our search results and update the total where it applies
@@ -57,7 +60,7 @@ router.route('/')
                                     }
                                     //If the length of our current search is the same length of our bar model...then we've completed both our loops and we're ready to render results
                                     if (i === current.length && j === barMatch.length) {
-                                        //Query the user model and find the last search array we saved, we'll call our function and add the city name and searched array. 
+                                        //Query the user model and find the last search array we saved, we'll call our function and add the city name and searched array.
                                         var queryList = user.where({ '_id': req.user.id });
                                         queryList.findOne(function(err, b) {
                                             userDataPage("city", b.lastsearch);
@@ -87,7 +90,7 @@ router.route('/')
             })
 
         } else {
-            //If not a logged in user, render an empty search to start 
+            //If not a logged in user, render an empty search to start
             var blank = [];
             res.render("results", {
                 title: "SEARCH PAGE",
@@ -96,7 +99,7 @@ router.route('/')
             });
             return;
         };
-        //If we called this function we are ready to display our results. 
+        //If we called this function we are ready to display our results.
         function userDataPage(c, results) {
             res.render("results", {
                 title: "SEARCH PAGE :/",
@@ -112,7 +115,8 @@ router.route('/')
         yelp.search({ term: 'bar', location: city })
             .then(function(data) {
                 var results = [];
-                for (i = 0; i < 5; i++) {
+
+                for (i = 0; i < 10; i++) {
                     var name = data.businesses[i].name;
                     var snippet = data.businesses[i].snippet_text;
                     var image = data.businesses[i].image_url;
@@ -129,7 +133,7 @@ router.route('/')
                             getResults(results)
                         });
                     }
-                    //we are pushing each of the objects from our yelp search into the lastsearch array. 
+                    //we are pushing each of the objects from our yelp search into the lastsearch array.
                     function getResults(results) {
                         user.findByIdAndUpdate(req.user._id, { $push: { lastsearch: { $each: results } } }, function(err, l) {
                             if (err) throw err;
@@ -147,7 +151,7 @@ router.route('/')
                                 var userlist = req.user.barlist[j].name;
                                 if (barN === userlist) {
                                     results[i].attending = "going";
-                                    //we change our attendance from "notgoing" to "going" and set our total to 1, this will be utilized to change 'totals' and change the color of the button via JQuery. 
+                                    //we change our attendance from "notgoing" to "going" and set our total to 1, this will be utilized to change 'totals' and change the color of the button via JQuery.
                                     user.findOneAndUpdate({ '_id': req.user.id, 'lastsearch.name': barN }, { '$set': { 'lastsearch.$.attending': "going", 'lastsearch.$.total': 1 } }, function(err, u) {})
                                 };
                             };
@@ -159,7 +163,7 @@ router.route('/')
                     function barModelAttendanceResult(results) {
                         var userCity = results[0].city;
                         var current = results
-                            //see if there's an existing city with bar names:We're updating the total attending. 
+                            //see if there's an existing city with bar names:We're updating the total attending.
                         bar.findOne({ city: userCity },
                             function(err, b) {
                                 //if the city does exist...
@@ -167,8 +171,8 @@ router.route('/')
                                     //loop through the search we submitted and get bar names.....
                                     for (i = 0; i < current.length; i++) { //This loop uses our latest search
                                         var searchbarname = current[i].name;
-                                        var barMatch = b.location; //this is the bar models array with bar names within it.  
-                                        for (j = 0; j < barMatch.length; j++) { //This loop goes through our bar model db, searching for bar name matches. 
+                                        var barMatch = b.location; //this is the bar models array with bar names within it.
+                                        for (j = 0; j < barMatch.length; j++) { //This loop goes through our bar model db, searching for bar name matches.
                                             var locabar = barMatch[j].bar;
                                             var locatotal = barMatch[j].total;
                                             //Match the bar names from our bar model to our search results and update the total where it applies
@@ -208,7 +212,7 @@ router.get('/attend/:id', function(req, res) {
                         var city = req.user.lastsearch[i].city;
                         var barN = req.user.lastsearch[i].name;
                         //Find the user ID and the bar name from this search then set attending to "going" and change the total to 1
-                        //!!CAUTION, maybe change total to 1 if there is no bar model info to insert. 
+                        //!!CAUTION, maybe change total to 1 if there is no bar model info to insert.
                         user.findOneAndUpdate({ '_id': req.user.id, 'lastsearch.name': req.params.id }, { '$set': { 'lastsearch.$.attending': "going", 'lastsearch.$.total': 1 } }, function(err, user) {
                             if (err) throw err;
                         });
@@ -234,7 +238,7 @@ router.get('/attend/:id', function(req, res) {
                                 //If the city is found, then look for the city AND the bar name in that city to see if it exists...
                                 var queryTwo = bar.where({ 'city': city, 'location.bar': barN });
                                 queryTwo.findOne(function(err, b) {
-                                    //If the bar name does not exist, push that bar name into the city array.  
+                                    //If the bar name does not exist, push that bar name into the city array.
                                     if (b === null || b === undefined) {
                                         bar.findOneAndUpdate({ 'city': city }, { $push: { 'location': { 'bar': barN, 'total': 1 } } },
                                             function(err, user) {
@@ -276,7 +280,7 @@ router.get('/attend/:id', function(req, res) {
                                 if (req.user.lastsearch[j].attending === "going") {
                                     var city = req.user.lastsearch[j].city;
                                     var barN = req.user.lastsearch[j].name;
-                                    //Find the user ID and the bar name from this search then set attending to "notgoing" and we subtract the total number going 
+                                    //Find the user ID and the bar name from this search then set attending to "notgoing" and we subtract the total number going
                                     user.findOneAndUpdate({ '_id': req.user.id, 'lastsearch.name': barN }, { '$set': { 'lastsearch.$.attending': "notgoing" } }, function(err, use) {
                                         if (err) throw err;
                                     });

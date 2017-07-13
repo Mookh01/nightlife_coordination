@@ -53,6 +53,15 @@ ul {
     font-size: 2em;
 }
 
+
+i {
+    text-align: center;
+    color: black;
+    left: 45%;
+    font-size: 2.5em;
+    position: fixed;
+}
+
 @media (min-width: 608px) {
     .main-container {
         width: 100%;
