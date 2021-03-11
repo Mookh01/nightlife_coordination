@@ -2,7 +2,6 @@
 A FreeCodeCamp challenge creating a night life coordination application using the yelp API, Node.js, Mongodb, Express.js, JQuery, Jade
 
 # Objective: 
-Visit https://freecodecamp.com/challenges/get-set-for-our-dynamic-web-application-projects.
 
 Here are the specific user stories you should implement for this project:
 
